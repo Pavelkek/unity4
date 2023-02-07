@@ -6,25 +6,14 @@ namespace Homework.Dogs
 {
     public class HappyDog : Dog
     {
-        private SpriteRenderer _spriteRenderer;
-
         private void Awake()
         {
-            WofAction = Woof;
-            Move = new Walk(this, -4f, 4f, 1f, WofAction);
+            Move = new Walk(this, -4f, 4f, 1f, Woof);
         }
 
         protected override void Woof()
         {
             Debug.Log("Happy woof!");
-        }
-
-        private SpriteRenderer GetSpriteRenderer()
-        {
-            if (_spriteRenderer == null)
-                _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-
-            return _spriteRenderer;
         }
 
         public override void ChangeColor()

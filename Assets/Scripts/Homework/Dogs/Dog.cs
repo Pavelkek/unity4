@@ -16,8 +16,7 @@ namespace Homework.Dogs
         public abstract void ChangeColor();
         protected abstract void Woof();
         protected Move Move;
-        protected Action WofAction;
-
+        private SpriteRenderer _spriteRenderer;
         protected void Start()
         {
             InputController.Instance.OnColorChanged += OnColorChanged;
@@ -36,6 +35,14 @@ namespace Homework.Dogs
         private void OnColorChanged()
         {
             ChangeColor();
+        }
+        
+        protected SpriteRenderer GetSpriteRenderer()
+        {
+            if (_spriteRenderer == null)
+                _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+            return _spriteRenderer;
         }
     }
 }

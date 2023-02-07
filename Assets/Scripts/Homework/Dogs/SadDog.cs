@@ -11,8 +11,6 @@ namespace Homework.Dogs
      */
     public class SadDog : Dog
     {
-        private SpriteRenderer _spriteRenderer;
-        
         protected override void Woof()
         {
             Debug.Log("Sad woof(");
@@ -20,16 +18,14 @@ namespace Homework.Dogs
 
         private void Awake()
         {
-            WofAction = Woof;
-            Move = new Run(this, -4f, 4f, 0.5f, WofAction);
-            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+            Move = new Run(this, -4f, 4f, 0.5f, Woof);
         }
 
         public override void ChangeColor()
         {
             var random = new System.Random();
             var blue = (float)random.NextDouble();
-            _spriteRenderer.color = new Color(0.1f, 0.1f, 0.5f + blue / 2);
+            GetSpriteRenderer().color = new Color(0.1f, 0.1f, 0.5f + blue / 2);
         }
     }
 }
